@@ -1,0 +1,22 @@
+{
+  "name": "spider003",
+  "version": "1.0.0",
+  "description": "",
+  "main": "yin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Dulmcat/yinSpider.git"
+  },
+  "author": "liushang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dulmcat/yinSpider/issues"
+  },
+  "homepage": "https://github.com/Dulmcat/yinSpider#readme",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}
