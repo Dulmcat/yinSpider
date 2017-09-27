@@ -1,8 +1,7 @@
 const request = require('request');
-const fs = require('fs');
 
 (() => {
-	const yinUrl = 'https://yys.tongren.163.com/article/?sort=new&span=30&tags=Cosplay&tags=%E5%90%8C%E4%BA%BACOS&start=180';
+	const yinUrl = 'https://yys.tongren.163.com/article/?sort=new&span=30'
 	getUrl(yinUrl);
 })();
 
@@ -18,16 +17,8 @@ function getUrl(yinUrl) {
 			let result = JSON.parse(body).data.articles;
 			console.log(result.length);
 			for(let i = 0; i< result.length; i++){
-				let url = result[i].body[0].fp_data.url;
-				let title = `${result[i].id}`;
-				savePic(url, title);
+				
 			}
 		}
 	})
-}
-
-function savePic(url, title){
-	console.log(`存储图片-->${title}`);
-	request(url).pipe(fs.createWriteStream(`./gif/${title}.jpg`));
-	console.log(`图片${title}-->存储完成啦！`);
 }
