@@ -1,4 +1,5 @@
 const request = require('request');
+const fs = require('fs');
 
 (() => {
 	const yinUrl = 'https://yys.tongren.163.com/article/?sort=new&span=30'
@@ -17,8 +18,19 @@ function getUrl(yinUrl) {
 			let result = JSON.parse(body).data.articles;
 			console.log(result.length);
 			for(let i = 0; i< result.length; i++){
-				
+				for(let j = 0; j < result[i].body.length; j++){
+					let picUrl = result[i].body[j];
+					if(picUrl.fp_data){
+						console.log(picUrl.fp_data.url);
+					}
+				}
 			}
 		}
 	})
+}
+
+function savePic(url, title){
+	console.log(`存储图片-->${title}`);
+	request(url).pipe(fs.createWriteStream(`./gif/${title}.jpg`));
+	console.log(`图片${title}-->存储完成啦！`);
 }
